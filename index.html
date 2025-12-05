@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손제주 - 제주의 감성을 담은 특별한 선물</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* 헤더 섹션 */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #E8E4F3 0%, #D4E4F7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 100px;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            font-weight: 700;
+            color: #6B5FD9;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #6B5FD9;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5849C2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(107, 95, 217, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #6B5FD9;
+            border: 2px solid #6B5FD9;
+        }
+
+        .btn-secondary:hover {
+            background: #6B5FD9;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-logo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+        }
+
+        /* 제품 갤러리 섹션 */
+        .products-gallery {
+            padding: 100px 80px;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #6B5FD9;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .product-category {
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        .category-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 5px solid #6B5FD9;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+        }
+
+        /* 겨울조끼 신상품 섹션 */
+        .new-product-section {
+            padding: 100px 80px;
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFE4E1 100%);
+        }
+
+        .new-product-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: #FF6B6B;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .new-product-content {
+            display: flex;
+            gap: 60px;
+            padding: 60px;
+        }
+
+        .slider-container {
+            flex: 1.2;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 600px;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .new-product-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .new-product-details h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .new-product-description {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .price-info {
+            background: #F8F9FA;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .price-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .price-label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        .price-value {
+            font-weight: 700;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .price-highlight {
+            color: #FF6B6B;
+        }
+
+        .product-features {
+            background: #FFF9E6;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #FFB800;
+        }
+
+        .product-features p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 가격 정책 섹션 */
+        .pricing-section {
+            padding: 100px 80px;
+            background: white;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #E8E4F3 0%, #D4E4F7 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(107, 95, 217, 0.2);
+        }
+
+        .pricing-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #6B5FD9;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+
+        /* 문의하기 섹션 */
+        .contact-section {
+            padding: 100px 80px;
+            background: linear-gradient(135deg, #6B5FD9 0%, #9C89E8 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .contact-section .release-date {
+            font-size: 24px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: white;
+            color: #6B5FD9;
+            padding: 20px 50px;
+            font-size: 20px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info {
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-details {
+            font-size: 18px;
+            line-height: 2;
+            text-align: left;
+        }
+
+        .contact-details p {
+            margin-bottom: 10px;
+        }
+
+        .contact-details strong {
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 1024px) {
+            .hero-section {
+                padding: 60px 40px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+
+            .new-product-content {
+                flex-direction: column;
+                padding: 40px;
+            }
+
+            .slider {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 40px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .products-gallery,
+            .new-product-section,
+            .pricing-section,
+            .contact-section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .new-product-details h2 {
+                font-size: 36px;
+            }
+
+            .contact-section h2 {
+                font-size: 36px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 메인 히어로 섹션 -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>손제주: 제주의 감성을<br>담은 특별한 선물</h1>
+            <p>제주 감성 소품과 기념품의 새로운 기준</p>
+            <div class="button-group">
+                <a href="https://www.miricanvas.com/v/144k9gi" class="btn btn-primary" target="_blank">상품 보러가기</a>
+                <a href="https://pf.kakao.com/_jDwLG/chat" class="btn btn-secondary" target="_blank">문의하기</a>
+            </div>
+        </div>
+        <div class="hero-logo">
+            <img src="손제주로고_결과.png" alt="손제주 로고">
+        </div>
+    </section>
+
+    <!-- 겨울조끼 신상품 출시 섹션 -->
+    <section class="new-product-section">
+        <div class="section-title">
+            <span class="new-badge">NEW 2025년 12월 출시</span>
+        </div>
+        <div class="new-product-container">
+            <div class="new-product-content">
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slide active">
+                            <img src="겨울양털조끼신상품출시/[대표]겨울양털조끼1_결과.png" alt="겨울양털조끼 대표 이미지">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/[대표]겨울양털조끼_결과.jpg" alt="겨울양털조끼">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/Gemini_Generated_Image_7lr2hs7lr2hs7lr2_결과.png" alt="겨울양털조끼 모델착용컷 1">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/Gemini_Generated_Image_jh9vj4jh9vj4jh9v_결과.png" alt="겨울양털조끼 모델착용컷 2">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/Gemini_Generated_Image_s7tpnhs7tpnhs7tp_결과.png" alt="겨울양털조끼 모델착용컷 3">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/제목 없음-12_결과.png" alt="겨울양털조끼 모델착용컷 4">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/제목 없음-21_결과.png" alt="겨울양털조끼 모델착용컷 5">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/제목 없음-26_결과.png" alt="겨울양털조끼 모델착용컷 6">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/제목 없음-29_결과.png" alt="겨울양털조끼 모델착용컷 7">
+                        </div>
+                        <div class="slide">
+                            <img src="겨울양털조끼신상품출시/제목 없음-30_결과.png" alt="겨울양털조끼 모델착용컷 8">
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <span class="slider-dot active" onclick="currentSlide(0)"></span>
+                        <span class="slider-dot" onclick="currentSlide(1)"></span>
+                        <span class="slider-dot" onclick="currentSlide(2)"></span>
+                        <span class="slider-dot" onclick="currentSlide(3)"></span>
+                        <span class="slider-dot" onclick="currentSlide(4)"></span>
+                        <span class="slider-dot" onclick="currentSlide(5)"></span>
+                        <span class="slider-dot" onclick="currentSlide(6)"></span>
+                        <span class="slider-dot" onclick="currentSlide(7)"></span>
+                        <span class="slider-dot" onclick="currentSlide(8)"></span>
+                        <span class="slider-dot" onclick="currentSlide(9)"></span>
+                    </div>
+                </div>
+                <div class="new-product-details">
+                    <h2>겨울양털조끼<br>신상품 출시!</h2>
+                    <p class="new-product-description">
+                        제주의 감성을 담은 따뜻한 겨울양털조끼가 출시되었습니다.
+                        다양한 코디와 함께 제주의 겨울을 더욱 따뜻하게 보낼 수 있습니다.
+                    </p>
+                    <div class="price-info">
+                        <div class="price-row">
+                            <span class="price-label">판매가</span>
+                            <span class="price-value price-highlight">7,000원</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">납품가</span>
+                            <span class="price-value">4,000원</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label">납품률</span>
+                            <span class="price-value">57%</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-label" style="font-size: 16px; color: #999;">부가세별도</span>
+                            <span class="price-value" style="font-size: 16px; color: #999;"></span>
+                        </div>
+                    </div>
+                    <div class="product-features">
+                        <p><strong>✓</strong> 2가지 색상으로 출시</p>
+                        <p><strong>✓</strong> 고품질 양털 소재</p>
+                        <p><strong>✓</strong> 제주 감성 디자인</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 제주 감성 소품 갤러리 -->
+    <section class="products-gallery">
+        <h2 class="section-title">제주 감성 가득한 소품</h2>
+
+        <!-- 겨울 의류 카테고리 -->
+        <div class="product-category">
+            <h3 class="category-title">겨울 의류</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="겨울양털조끼신상품출시/[대표]겨울양털조끼1_결과.png" alt="겨울양털조끼">
+                    <div class="product-info">
+                        <p class="product-name">겨울양털조끼</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 카피바라 가방 & 인형 카테고리 -->
+        <div class="product-category">
+            <h3 class="category-title">카피바라 가방 & 인형</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="제품사진/(대표)거북이가방맨카피바라_결과.jpg" alt="카피바라 거북이 가방">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 거북이 가방</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표사진)카피바라인형배낭가방_결과.png" alt="카피바라 인형 배낭가방">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 인형 배낭가방</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표사진)손)카피바라인형외줄가방_결과.png" alt="카피바라 인형 외줄가방">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 인형 외줄가방</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/카피바라털끈가방4_결과.jpg" alt="카피바라 털끈 가방">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 털끈 가방</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표사진)손)카피바라엎드린인형_결과.png" alt="카피바라 엎드린 인형">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 엎드린 인형</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 키링 & 액세서리 카테고리 -->
+        <div class="product-category">
+            <h3 class="category-title">키링 & 액세서리</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="제품사진/(대표)카피바라얼굴인형키링_결과.png" alt="카피바라 얼굴 인형 키링">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 얼굴 키링</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표사진)손)카피바라풍선키홀더_결과.jpg" alt="카피바라 풍선 키홀더">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 풍선 키홀더</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표)새싹폼키링_결과.png" alt="새싹 폼 키링">
+                    <div class="product-info">
+                        <p class="product-name">새싹 폼 키링</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표사진)검은강아지키링_결과.png" alt="검은 강아지 키링">
+                    <div class="product-info">
+                        <p class="product-name">검은 강아지 키링</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 귤 & 한라봉 굿즈 카테고리 -->
+        <div class="product-category">
+            <h3 class="category-title">귤 & 한라봉 굿즈</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="제품사진/[대표]말랑애기한라봉(3P)_결과.jpg" alt="말랑애기한라봉">
+                    <div class="product-info">
+                        <p class="product-name">말랑애기한라봉 (3P)</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/말랑말랑한라봉-9_결과.jpg" alt="말랑말랑 한라봉">
+                    <div class="product-info">
+                        <p class="product-name">말랑말랑 한라봉</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표)귤베레모모자_결과.jpg" alt="귤 베레모 모자">
+                    <div class="product-info">
+                        <p class="product-name">귤 베레모 모자</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표)뜨개귤모자머리띠_결과.jpg" alt="뜨개 귤 모자 머리띠">
+                    <div class="product-info">
+                        <p class="product-name">뜨개 귤 모자 머리띠</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/인싸템귤귤선글이_결과.jpg" alt="인싸템 귤귤 선글라스">
+                    <div class="product-info">
+                        <p class="product-name">인싸템 귤귤 선글라스</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 문구류 카테고리 -->
+        <div class="product-category">
+            <h3 class="category-title">문구류</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="제품사진/(대표)카피바라연필_결과.jpg" alt="카피바라 연필">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 연필</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표)카피바라연필깍이_결과.jpg" alt="카피바라 연필깍이">
+                    <div class="product-info">
+                        <p class="product-name">카피바라 연필깍이</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/(대표사진)귤털볼펜_결과.jpg" alt="귤 털 볼펜">
+                    <div class="product-info">
+                        <p class="product-name">귤 털 볼펜</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="제품사진/소라볼펜, 귤뚜껑펜, 벙거지모자-75_결과.jpg" alt="소라볼펜, 귤뚜껑펜, 벙거지모자">
+                    <div class="product-info">
+                        <p class="product-name">소라볼펜, 귤뚜껑펜 세트</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="https://www.miricanvas.com/v/144k9gi" class="btn btn-primary" target="_blank" style="font-size: 20px; padding: 20px 60px;">제품 상세보기</a>
+        </div>
+    </section>
+
+    <!-- 합리적인 가격 정책 -->
+    <section class="pricing-section">
+        <h2 class="section-title">합리적인 가격 정책</h2>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <h3>대량 구매 할인</h3>
+                <p>구매 수량에 따른 탄력적 가격 적용</p>
+            </div>
+            <div class="pricing-card">
+                <h3>시즌별 프로모션</h3>
+                <p>계절 맞춤형 특별 할인 행사 진행</p>
+            </div>
+            <div class="pricing-card">
+                <h3>신규 고객 혜택</h3>
+                <p>첫 구매 고객을 위한 특별 할인</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 문의하기 섹션 -->
+    <section class="contact-section" id="contact">
+        <h2>지금 바로 손제주 상품을 주문하세요</h2>
+        <p class="release-date">2025년 12월 출시</p>
+        <div class="contact-buttons">
+            <a href="https://pf.kakao.com/_jDwLG/chat" class="contact-btn" target="_blank">문의하기</a>
+        </div>
+        <div class="contact-info">
+            <div class="contact-details">
+                <p><strong>주소:</strong> 제주특별자치도 제주시 신대로 8길 18 손제주</p>
+                <p><strong>전화:</strong> 010-2724-4756</p>
+                <p><strong>사업자번호:</strong> 338-06-02865</p>
+                <p><strong>입금계좌:</strong> 제주은행 / 700-100-460551 / 손제주(소윤섭)</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // GitHub Pages 이미지 경로 자동 인코딩
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                const originalSrc = img.getAttribute('src');
+                // 이미 인코딩되지 않은 경우에만 처리
+                if (originalSrc && originalSrc.includes('/')) {
+                    const parts = originalSrc.split('/');
+                    const encodedParts = parts.map((part, index) => {
+                        // 마지막 부분(파일명)만 인코딩
+                        if (index === parts.length - 1) {
+                            return encodeURIComponent(part);
+                        }
+                        return part;
+                    });
+                    img.src = encodedParts.join('/');
+                }
+            });
+        });
+
+        // 슬라이더 기능
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            showSlide(currentSlideIndex);
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
+
+        // 자동 슬라이드
+        setInterval(nextSlide, 4000);
+
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
